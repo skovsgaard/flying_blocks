@@ -1,5 +1,6 @@
 BasePlatform platform = new BasePlatform();
 Player player = new Player();
+Obstacle obstacle = new Obstacle(850, platform.y-50);
 
 void setup() {
   size(900, 500);
@@ -11,7 +12,8 @@ void draw() {
   platform.draw();
   player.draw();
 
-  Obstacle currObst = new Obstacle(width - 50, platform.y - 50);
+  obstacle.move();
+  obstacle.draw();
 }
 
 void keyPressed() {
