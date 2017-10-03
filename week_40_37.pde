@@ -9,7 +9,15 @@ void setup() {
 void draw() {
   background(25, 25, 140);
   platform.draw();
-  platform.move();
   player.draw();
+
+  Obstacle currObst = new Obstacle(width - 50, platform.y - 50);
 }
 
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == SHIFT) {
+      player.dodge();
+    }
+  }
+}
