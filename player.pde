@@ -4,8 +4,8 @@ class Player {
   boolean isJumping = false;
   int dodgeLength = 100;
 
-  float jumpPower = -10.0;
-  float jumpSpeed = -10.0;
+  float jumpPower = -15.0;
+  float velocity = -15.0;
   float gravity = 0.5;
   
   int h = 50, w = 50;
@@ -18,12 +18,11 @@ class Player {
 
   void update(BasePlatform platform) {
     if (isJumping) {
-      y += jumpSpeed;
-      jumpSpeed += gravity;
+      y += velocity;
+      velocity += gravity;
 
       if ((y + h) >= platform.y) {
-        println(platform.y);
-        jumpSpeed = jumpPower;
+        velocity = jumpPower;
         isJumping = false;
       }
     }
@@ -33,6 +32,13 @@ class Player {
     isJumping = value;
   }
 
+  boolean passed(Obstacle obstacle) {
+    if (x == obstacle.x + obstacle.w) {
+      return true;
+    }
+    return false;
+  }
+  
   boolean collidingWith(Obstacle o) {
     return x + w >= o.x && y >= o.y;
   }

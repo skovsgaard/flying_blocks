@@ -8,11 +8,12 @@
 BasePlatform platform = new BasePlatform();
 Player player = new Player();
 Obstacle obstacle;
+Score score = new Score();
 
 void setup() {
   size(900, 500);
   noStroke();
-  obstacle = new Obstacle(height - 50, platform.y-50);
+  obstacle = new Obstacle(width, platform.y-50);
 }
 
 void draw() {
@@ -25,9 +26,13 @@ void draw() {
     
     obstacle.move();
     obstacle.draw();
+
+    if (player.passed(obstacle)) { score.update();}
+    score.draw();
   } else {
     clear();
     text("You lost the game", 10, 10);
+    text("You had " + score.numJumps + " successful jumps.", 10, 30);
   }
 }
 
