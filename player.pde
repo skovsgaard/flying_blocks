@@ -20,4 +20,8 @@ class Player {
       isUp = true;
     }
   }
+
+  boolean collidingWith(Obstacle o) {
+    return x + w >= o.x && y >= o.y;
+  }
 }
