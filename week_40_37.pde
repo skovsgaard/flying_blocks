@@ -12,7 +12,7 @@ Obstacle obstacle;
 void setup() {
   size(900, 500);
   noStroke();
-  obstacle = new Obstacle(850, platform.y-50);
+  obstacle = new Obstacle(height - 50, platform.y-50);
 }
 
 void draw() {
@@ -20,6 +20,7 @@ void draw() {
 
   if (!player.collidingWith(obstacle)) {
     platform.draw();
+    player.update(platform);
     player.draw();
     
     obstacle.move();
@@ -33,7 +34,7 @@ void draw() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == SHIFT) {
-      player.dodge();
+      player.setJumping(true);
     }
   }
 }

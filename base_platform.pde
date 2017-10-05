@@ -4,6 +4,6 @@ class BasePlatform {
   
   void draw() {
     fill(240);
-    rect(0, 400, width, height);
+    rect(x, y, width, height);
   }
 }
