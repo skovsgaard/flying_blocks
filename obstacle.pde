@@ -20,6 +20,11 @@ class Obstacle {
     rect(x, y, w, h);
   }
 
+  void draw(int newY) {
+    y = newY;
+    rect(x, newY, w, h);
+  }
+
   void move() {
     if (x <= -50) {
       hasLeft = true;

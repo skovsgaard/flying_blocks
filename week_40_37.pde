@@ -2,7 +2,7 @@
   Title: "Not quite FlappyBird"
   Description: A quick little game of jumping.
   By Jonas Skovsgaard Christensen, 5 October 2017
-  Comments: Press SHIFT to jump.
+  Comments: Press UP to jump and SHIFT to restart the game when dead.
 */
 
 BasePlatform platform = new BasePlatform();
@@ -25,7 +25,7 @@ void draw() {
   background(25, 25, 140);
 
   platform.draw();
-  obstacle.draw();
+  obstacle.draw(int(random(platform.y-50, platform.y-200)));
   
   if (!player.collidingWith(obstacle)) {
     player.update(platform);
@@ -42,12 +42,16 @@ void draw() {
     }
     text("You lost the game", 20, 20);
     text("You had " + score.numJumps + " successful jumps.", 20, 40);
+
+    if (keyPressed) {
+      if (keyCode == SHIFT) { setup(); }
+    }
   }
 }
 
 void keyPressed() {
   if (key == CODED) {
-    if (keyCode == SHIFT) {
+    if (keyCode == UP) {
       player.setJumping(true);
     }
   }
