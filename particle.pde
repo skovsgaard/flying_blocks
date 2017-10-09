@@ -5,9 +5,7 @@ class Particle {
   float velocityX = 0;
   float velocityY = 0;
 
-  color c = color(int(random(128, 256)),
-                  int(random(128, 256)),
-                  int(random(128, 256)));
+  color particleClr = color(240);
 
   float gravity = 0.3;
 
@@ -20,9 +18,8 @@ class Particle {
   }
 
   void display() {
-    stroke(c);
+    stroke(particleClr);
     point(posX, posY);
-    println("display() was called");
   }
 
   void move() {
