@@ -20,11 +20,6 @@ class Obstacle {
     rect(x, y, w, h);
   }
 
-  void draw(int newY) {
-    y = newY;
-    rect(x, newY, w, h);
-  }
-
   void move() {
     if (x <= -50) {
       hasLeft = true;
@@ -40,5 +35,6 @@ class Obstacle {
 
   void wrapAround() {
     x = 900;
+    //y = int(random(100, 350));
   }
 }

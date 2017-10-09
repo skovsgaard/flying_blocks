@@ -10,7 +10,7 @@ class Player {
   
   int h = 50, w = 50;
   color clr = color(240);
-  
+
   void draw() {
     fill(clr);
     rect(x, y, h, w);

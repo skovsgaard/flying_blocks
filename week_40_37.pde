@@ -25,7 +25,7 @@ void draw() {
   background(25, 25, 140);
 
   platform.draw();
-  obstacle.draw(int(random(platform.y-50, platform.y-200)));
+  obstacle.draw();
   
   if (!player.collidingWith(obstacle)) {
     player.update(platform);
@@ -44,7 +44,10 @@ void draw() {
     text("You had " + score.numJumps + " successful jumps.", 20, 40);
 
     if (keyPressed) {
-      if (keyCode == SHIFT) { setup(); }
+      if (keyCode == SHIFT) {
+        score.numJumps = 0;
+        setup();
+      }
     }
   }
 }
