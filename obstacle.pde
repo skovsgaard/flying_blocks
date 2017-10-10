@@ -37,6 +37,6 @@ class Obstacle {
 
   void wrapAround() {
     x = 900;
-    //y = int(random(100, 350));
+    y = int(random(100, 350));
   }
 }

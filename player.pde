@@ -40,6 +40,9 @@ class Player {
   }
   
   boolean collidingWith(Obstacle o) {
-    return x + w >= o.x && y >= o.y;
+    return
+      x + w >= o.x &&
+      y <= o.y + o.h &&
+      y >= o.y;
   }
 }
