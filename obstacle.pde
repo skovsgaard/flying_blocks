@@ -26,6 +26,8 @@ class Obstacle {
     }
     
     if (hasLeft) {
+      float randPercentage = random(1);
+      if (randPercentage > 0.8) { moveSpeed++; }
       wrapAround();
       hasLeft = false;
     } else {
