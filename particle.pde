@@ -18,8 +18,9 @@ class Particle {
   }
 
   void display() {
+    int pDiameter = 3;
     stroke(particleClr);
-    point(posX, posY);
+    ellipse(posX, posY, pDiameter, pDiameter);
   }
 
   void move() {
