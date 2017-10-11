@@ -11,9 +11,10 @@ class Player {
   int h = 50, w = 50;
   color clr = color(240);
 
-  void draw() {
+  void draw(Animation animation) {
     fill(clr);
-    rect(x, y, h, w);
+    //rect(x, y, h, w);
+    animation.display(x, y);
   }
 
   void update(BasePlatform platform) {
