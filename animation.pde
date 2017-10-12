@@ -17,8 +17,4 @@ class Animation {
     frame = (frame+1) % imageCount;
     image(images[frame], xpos, ypos);
   }
-
-  int getWidth() {
-    return images[0].width;
-  }
 }
