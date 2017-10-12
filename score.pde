@@ -8,4 +8,8 @@ class Score {
   void update() {
     numJumps++;
   }
+
+  void reset() {
+    numJumps = 0;
+  }
 }

@@ -49,7 +49,7 @@ void draw() {
 
     if (keyPressed) {
       if (keyCode == SHIFT) {
-        score.numJumps = 0;
+        score.reset();
         setup();
       }
     }
