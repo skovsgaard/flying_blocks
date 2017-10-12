@@ -20,7 +20,7 @@ class Obstacle {
     rect(x, y, w, h);
   }
 
-  void move() {
+  void move(Score score) {
     if (x <= -50) {
       hasLeft = true;
     }
@@ -28,15 +28,16 @@ class Obstacle {
     if (hasLeft) {
       float randPercentage = random(1);
       if (randPercentage > 0.8) { moveSpeed++; }
-      wrapAround();
+      wrapAround(score);
       hasLeft = false;
     } else {
       x -= moveSpeed;
     }
   }
 
-  void wrapAround() {
+  void wrapAround(Score score) {
     x = 900;
     y = int(random(100, 350));
+    score.update();
   }
 }

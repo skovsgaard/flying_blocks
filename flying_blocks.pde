@@ -35,9 +35,8 @@ void draw() {
     player.update(platform);
     player.draw(animation);
     
-    obstacle.move();
+    obstacle.move(score);
 
-    if (player.passed(obstacle)) { score.update();}
     score.draw();
   } else {
     for (int i = 0; i < particles.length; i++) {
@@ -45,7 +44,7 @@ void draw() {
       particles[i].display();
     }
     text("You lost the game", 20, 20);
-    text("You had " + score.numJumps + " successful jumps.", 20, 40);
+    text("You successfully passed " + score.get() + " obstacles.", 20, 40);
 
     if (keyPressed) {
       if (keyCode == SHIFT) {

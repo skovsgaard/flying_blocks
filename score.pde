@@ -1,6 +1,10 @@
 class Score {
   int numJumps = 0;
 
+  int get() {
+    return numJumps;
+  }
+  
   void draw() {
     text(numJumps, width-50, 50);
   }
