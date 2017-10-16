@@ -13,6 +13,11 @@ Particle[] particles = new Particle[200];
 
 Animation animation;
 
+HighScore hs = new HighScore();
+
+boolean gameOver = false;
+String hsName = "";
+
 void setup() {
   size(900, 500);
   noStroke();
@@ -43,14 +48,20 @@ void draw() {
       particles[i].move();
       particles[i].display();
     }
+    gameOver = true;
+    
     text("You lost the game", 20, 20);
     text("You successfully passed " + score.get() + " obstacles.", 20, 40);
-
-    if (keyPressed) {
-      if (keyCode == SHIFT) {
-        score.reset();
-        setup();
-      }
+    text("Please enter your name:", 20, 60);
+    text(hsName, 20, 80);
+    
+    int offsetCounter = 20;
+    
+    text("HighScore:", width-180, offsetCounter);
+    
+    for (Map.Entry entry : hs.getScoreTable().entrySet()) {
+      offsetCounter += 20;
+      text(entry.getKey() + ": " + entry.getValue(), width-180, offsetCounter);
     }
   }
 }
@@ -59,6 +70,25 @@ void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
       player.setJumping(true);
+    }
+  }
+}
+
+void keyReleased() {
+  if (gameOver) {
+    if (keyCode == RETURN || keyCode == ENTER) {
+      hs.save(hsName,score.get());
+      gameOver = false;
+      score.reset();
+      setup();
+    } else if (keyCode == BACKSPACE) {
+      if (hsName.length() > 0) {
+        hsName = hsName.substring(0, hsName.length()-1);
+      }
+    } else if (keyCode == DELETE) {
+      hsName = "";
+    } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+      hsName = hsName + key;
     }
   }
 }
