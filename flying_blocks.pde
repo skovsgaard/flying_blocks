@@ -1,9 +1,9 @@
 /*
   Title: "Flying Blocks"
-  Description: A little game of jumping.
-  By Jonas Skovsgaard Christensen, 5 October 2017
-  Comments: Press UP to jump and SHIFT to restart the game when dead.
-*/
+ Description: A little game of jumping.
+ By Jonas Skovsgaard Christensen, 5 October 2017
+ Comments: Press UP to jump.
+ */
 
 // Declare and/or initialize the required objects for the game
 BasePlatform platform = new BasePlatform();
@@ -33,7 +33,7 @@ void setup() {
 
   // Populate the array of particles required for the player sprite to explode
   for (int i = 0; i < particles.length; i++) {
-    particles[i] = new Particle(player.x, player.y, random(-3,3), random(-6,0));
+    particles[i] = new Particle(player.x, player.y, random(-3, 3), random(-6, 0));
   }
 }
 
@@ -99,7 +99,7 @@ void keyReleased() {
   if (gameOver) {
     // Save the name and score in the hs object's HashMap, when ENTER is pressed
     if (keyCode == RETURN || keyCode == ENTER) {
-      hs.save(hsName,score.get());
+      hs.save(hsName, score.get());
       gameOver = false;
       score.reset();
       setup();
