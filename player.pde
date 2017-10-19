@@ -1,22 +1,25 @@
 class Player {
+  // Initialize a fixed starting position and
+  // a variable to hold jumping state
   float x = 50.0, y = 350.0;
-  boolean isUp = false;
   boolean isJumping = false;
-  int dodgeLength = 100;
 
+  // Set the force with which the player can jump,
+  // the velocity of the jump, and the gravity
   float jumpPower = -15.0;
   float velocity = -15.0;
   float gravity = 0.5;
-  
-  int h = 50, w = 50;
-  color clr = color(240);
 
+  // Set height and width. Used exclusively to calculate collision
+  int h = 50, w = 50;
+
+  // Display the animation at the player's x,y
   void draw(Animation animation) {
-    fill(clr);
-    //rect(x, y, h, w);
     animation.display(x, y);
   }
 
+  // Identify whether the player is jumping,
+  // and if so whether the player has landed on the BasePlatform again
   void update(BasePlatform platform) {
     if (isJumping) {
       y += velocity;
@@ -28,18 +31,13 @@ class Player {
       }
     }
   }
-  
+
+  // Setter for isJumping
   void setJumping(boolean value) {
     isJumping = value;
   }
 
-  boolean passed(Obstacle obstacle) {
-    if (x == obstacle.x + obstacle.w) {
-      return true;
-    }
-    return false;
-  }
-  
+  // Check whether the player is colliding with an obstacle
   boolean collidingWith(Obstacle o) {
     return
       x + w >= o.x &&
